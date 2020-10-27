@@ -201,7 +201,7 @@
         select count(*) from myblog.t_blog
     </select>
     <select id="getBlogViewTotal" resultType="Integer">
-        select sum(views) from myblog.t_blog
+        select ifnull(sum(views),0) from myblog.t_blog
     </select>
     <select id="getBlogCommentTotal" resultType="Integer">
         select count(*) from myblog.t_comment

@@ -9,6 +9,7 @@ import com.star.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,6 +36,9 @@ public class TypeShowController {
     @GetMapping("/types/{id}")
     public String types(@RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum, @PathVariable Long id, Model model) {
         List<Type> types = typeService.getAllTypeAndBlog();
+        if (CollectionUtils.isEmpty(types)) {
+            return "types";
+        }
         System.out.println("types:"+types);
         //-1表示从首页导航点进来的
         if (id == -1) {

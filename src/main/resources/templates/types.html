@@ -45,7 +45,7 @@
         </div>
 
         <div class="ui top attached teal m-opacity segment">
-            <div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${pageInfo.list}">
+            <div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${pageInfo?.list}">
                 <div class="ui middle aligned mobile reversed stackable grid">
                     <div class="eleven wide column">
                         <h3 class="ui header"><a class="m-black m-title-font" href="#" target="_blank"
@@ -97,18 +97,18 @@
         <!--分页-->
         <div class="ui bottom attached segment m-opacity stackable grid">
             <div align="center" class="three wide column">
-                <a class="item" th:href="@{/types(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}"
-                   th:unless="${pageInfo.isFirstPage}">上一页</a>
+                <a class="item" th:href="@{/types(pageNum=${pageInfo?.hasPreviousPage}?${pageInfo?.prePage}:1)}"
+                   th:unless="${pageInfo?.isFirstPage}">上一页</a>
             </div>
 
             <div align="center" class="ten wide column">
-                <p><span th:text="${pageInfo.pageNum}"></span> / <span th:text="${pageInfo.pages}"></span></p>
+                <p><span th:text="${pageInfo?.pageNum}"></span> / <span th:text="${pageInfo?.pages}"></span></p>
             </div>
 
             <div align="center" class="three wide column">
                 <a class="item"
-                   th:href="@{/types(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}"
-                   th:unless="${pageInfo.isLastPage}">下一页</a>
+                   th:href="@{/types(pageNum=${pageInfo?.hasNextPage}?${pageInfo?.nextPage}:${pageInfo?.pages})}"
+                   th:unless="${pageInfo?.isLastPage}">下一页</a>
             </div>
         </div>
 
