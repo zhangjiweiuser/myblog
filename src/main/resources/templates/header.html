@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+</head>
+<body>
+
+<!--底部栏-->
+<div th:fragment="navHeader">
+    <!--导航-->
+    <nav class="gird-header" id="nav" style="display: none">
+        <div class="ui container">
+            <div class="ui inverted secondary stackable menu">
+                <h2 class="ui olive header item" style="font-family: STSong">一一之家</h2>
+                <!--<div class="right m-item item m-mobile-hide">-->
+                <a class="active m-item item" href="#" th:href="@{/}"><i class="home icon"></i>首页</a>
+                <a class="m-item item" href="#" th:href="@{/types/-1}"><i class="clone outline icon"></i>分类</a>
+                <a class="m-item item" href="#" th:href="@{/archives}"><i class="clock icon"></i>时间轴</a>
+                <!--                <a href="#" th:href="@{/music}" class="m-item item"><i class="music icon"></i>音乐盒</a>-->
+                <a class="m-item item" href="#" th:href="@{/message}"><i class="book icon"></i>留言板</a>
+                <!--                <a href="#" th:href="@{/friends}" class="m-item item"><i class="pencil alternate icon"></i>友人帐</a>-->
+                <a class="olive m-item item" href="#" th:href="@{/picture}"><i class="image icon"></i>照片墙</a>
+                <a class="m-item item" href="#" th:href="@{/about}"><i class="info icon"></i>关于我</a>
+                <!--</div>-->
+                <div class="right m-item item">
+                    <form action="#" method="post" name="search" target="_blank" th:action="@{/search}">
+                        <div class="ui icon transparent input m-margin-tb-tiny" style="color: white">
+                            <input name="query" placeholder="Search...." style="color: white" th:value="${query}"
+                                   type="text">
+                            <i class="search link icon" onclick="document.forms['search'].submit()"></i>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <a class="ui menu toggle black icon button m-right-top m-mobile-hide" href="#" style="display: none">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+
+
+    <!--顶部图片-->
+    <div class="m-bg-class_outer" style="width: 100%;height: 750px">
+        <img alt="" class="ui m-bg image" src="../static/images/bg.jpg" style="width: 100%;height: 100%"
+             th:src="@{/images/bg.jpg}">
+        <div align="center" class="m-bg-class_cover">
+            <div align="center" class="m-margin-top-maxx">
+                <img align="center" class="ui circular image" src="../static/images/backimg.jpg"
+                     style="width: 150px;height: 150px;" th:src="@{/images/me.jpg}">
+            </div>
+            <div align="center" class="m-font-size-title-mediul">一一之家</div>
+
+            <div align="center" class="">
+                <!--                <a href="#" class="ui tencent circular icon button"><i class="user icon"></i></a>-->
+                <a class="ui wechat circular icon button" href="#"><i class="weixin icon"></i></a>
+                <a class="ui qq circular icon button" data-content="873526411" data-position="bottom center" href="#"><i
+                        class="qq icon"></i></a>
+                <!--                <a href="https://github.com/oneStarLR/" target="_blank" class="ui github circular icon button"-->
+                <!--                   data-content="点击跳转GitHub" data-position="bottom center"><i class="github icon"></i></a>-->
+                <!--                <a href="https://onestar.blog.csdn.net/" target="_blank" class="ui csdn circular icon button"-->
+                <!--                   data-content="点击跳转CSDN" data-position="bottom center"><i class="copyright outline icon"></i></a>-->
+                <!--                <a href="#" class="ui email circular icon button" data-content="onestarlr@hotmail.com"-->
+                <!--                   data-position="bottom center"><i class="envelope  icon"></i></a>-->
+            </div>
+
+            <div class="ui tencent-qr flowing popup transition hidden">
+                <img alt="" class="ui rounded image" src="../static/images/oneStar.jpg" style="width: 110px"
+                     th:src="@{/images/oneStar.jpg}">
+                <div align="center">公众号</div>
+            </div>
+            <div class="ui wechat-qr flowing popup transition hidden">
+                <img alt="" class="ui rounded image" src="../static/images/zhangwx.jpg"
+                     style="width: 110px" th:src="@{/images/zhangwx.jpg}">
+                <div align="center">微信</div>
+            </div>
+            <div class="ui qq-qr flowing popup transition hidden">
+                <img alt="" class="ui rounded image" src="../static/images/qq.jpg" style="width: 110px"
+                     th:src="@{/images/qq.jpg}">
+                <div align="center">QQ</div>
+            </div>
+
+            <div align="center" class="m-font-size-text">欢迎来到我的家园，我是一一，最美最美的一一</div>
+            <hr style="width: 50%">
+            <h5 class="m-font-size-text-init-title m-margin-top-large">“大眼睛”</h5>
+            <h5 class="m-font-size-text-init-title">“亮晶晶”</h5>
+            <h5 class="m-font-size-text-init-title">“一眨一眨”</h5>
+            <h5 class="m-font-size-text-init-title">“像星星......”</h5>
+            <div align="center" class="ui m-margin-top-large" id="waypoint">
+                <a class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" href="#"
+                   th:classappend="${n==1} ? 'active'"
+                   th:href="@{/}"><i class="home icon"></i>首页</a>
+                <a class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" href="#"
+                   th:classappend="${n==2} ? 'active'"
+                   th:href="@{/types/-1}"><i class="clone outline icon"></i>分类</a>
+                <a class="ui circular icon button m-opacity-small m-item item m-mobile-hide" href="#"
+                   th:classappend="${n==4} ? 'active'"
+                   th:href="@{/archives}"><i class="clock icon"></i>时间轴</a>
+                <!--                <a href="#" th:href="@{/music}"-->
+                <!--                   class="ui circular icon button m-opacity-small m-item item m-mobile-hide"-->
+                <!--                   th:classappend="${n==5} ? 'active'"><i class="music icon"></i>音乐盒</a>-->
+                <a class="ui circular icon button m-opacity-small m-item item m-mobile-hide" href="#"
+                   th:classappend="${n==6} ? 'active'"
+                   th:href="@{/message}"><i class="book icon"></i>留言板</a>
+                <!--            <a href="#" th:href="@{/friends}" class="ui circular icon button m-opacity-small m-item item m-mobile-hide" th:classappend="${n==7} ? 'active'"><i class="pencil alternate icon"></i>友人帐</a>-->
+                <a class="ui circular icon button m-opacity-small m-item item m-mobile-hide" href="#"
+                   th:classappend="${n==8} ? 'active'"
+                   th:href="@{/picture}"><i class="image icon"></i>照片墙</a>
+                <a class="ui circular icon button m-opacity-small m-item item m-mobile-hide" href="#"
+                   th:classappend="${n==9} ? 'active'"
+                   th:href="@{/about}"><i class="info icon"></i>关于我</a>
+            </div>
+            <div class="hiddenDiv"></div>
+        </div>
+
+    </div>
+</div>
+</body>
+
+
+

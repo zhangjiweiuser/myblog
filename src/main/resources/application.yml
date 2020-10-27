@@ -1,3 +1,4 @@
+
 spring:
   thymeleaf:
     mode: HTML
@@ -8,3 +9,5 @@ spring:
 
 comment.avatar: /images/avatar.png
 message.avatar: /images/avatar.png
+server:
+  port: 8082
