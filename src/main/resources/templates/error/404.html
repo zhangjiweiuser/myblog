@@ -33,36 +33,46 @@
 <footer id="waypoint" class="ui inverted vertical segment m-padded-tb-massive m-opacity">
   <div class="ui center aligned container">
     <div class="ui inverted divided stackable grid">
-      <div class="three wide column">
-        <div class="ui inverted link list">
-          <div class="item">
-            <img src="../static/images/oneStarWechat.jpg" th:src="@{/images/oneStarWechat.jpg}"  class="ui rounded image" alt="" style="width: 110px">
-          </div>
+
+        <div class="four wide column">
+            <h4 class="ui inverted header m-text-thin m-text-spaced "></h4>
+            <div id="newblog-container">
+                <!--          <div class="ui inverted link list" th:fragment="newblogList">-->
+                <!--            <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item m-text-thin" th:each="blog : ${newblogs}" th:text="${blog.title}">最新博文</a>-->
+                <!--          </div>-->
         </div>
       </div>
-      <div class="four wide column" >
-        <h4 class="ui inverted header m-text-thin m-text-spaced " >最新博客</h4>
-        <div id="newblog-container">
-          <div class="ui inverted link list" th:fragment="newblogList">
-            <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item m-text-thin" th:each="blog : ${newblogs}" th:text="${blog.title}">最新博文</a>
-          </div>
+        <div class="four wide column">
+            <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我</h4>
+            <div class="ui inverted link list">
+                <a class="item m-text-thin" href="#">Email：873526411@qq.com</a>
+                <a class="item m-text-thin" href="#">QQ：873526411</a>
         </div>
       </div>
       <div class="four wide column">
-        <h4 class="ui inverted header m-text-thin m-text-spaced ">联系我</h4>
         <div class="ui inverted link list">
-          <a href="#" class="item m-text-thin">Email：onestarlr@hotmail.com</a>
-          <a href="#" class="item m-text-thin">QQ：316392836</a>
+            <div class="item">
+                <!--微信二维码-->
+                <div class="ui inverted m-text-thin m-text-spaced "
+                     style="font-size: large;font-weight: bold">微信
+                </div>
+                <img alt="" class="ui m-margin-top rounded image"
+                     src="../static/images/zhangwx.jpg" style="width: 110px"
+                     th:src="@{/images/zhangwx.jpg}">
+            </div>
         </div>
       </div>
-      <div class="five wide column">
-          <h4 class="inverted header m-text-thin m-text-spaced">我的家园已经营</h4>
-        <p id="htmer_time" class="item m-text-thin">
-      </div>
+        <div class="four wide column">
+            <h4 class="inverted header m-text-thin m-text-spaced"></h4>
+
+        </div>
     </div>
 
     <div class="ui inverted section divider"></div>
-    <a rel="nofollow" href="http://www.beian.miit.gov.cn" target="_blank">赣ICP备20004408号-1</a>
+      <div class="ui inverted m-text-thin m-text-spaced" style="color: #F08047;margin-top: -18px">我的家园已营业：<span
+              class="item m-text-thin" id="htmer_time"></span> (*๓´╰╯`๓)
+      </div>
+      <a href="http://www.beian.miit.gov.cn" rel="nofollow" target="_blank">驻ICP备2454515号-1</a>
   </div>
 
 </footer>
@@ -72,7 +82,7 @@
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
 
 <script>
-    $('#newblog-container').load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
+    // $('#newblog-container').load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
 
     // 运行时间统计
     function secondToDate(second) {

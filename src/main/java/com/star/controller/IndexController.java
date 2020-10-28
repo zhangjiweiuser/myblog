@@ -1,5 +1,6 @@
 package com.star.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.star.dao.BlogDao;
@@ -8,6 +9,7 @@ import com.star.queryvo.DetailedBlog;
 import com.star.queryvo.FirstPageBlog;
 import com.star.service.BlogService;
 import com.star.service.CommentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,7 @@ import java.util.List;
 /**
  * @Description: 首页控制器
  */
+@Slf4j
 @Controller
 public class IndexController {
 
@@ -38,26 +41,31 @@ public class IndexController {
     @Autowired
     private CommentService commentService;
 
-    //    分页查询博客列表
+    /**
+     * 分页查询博客列表
+     */
     @GetMapping("/")
     public String index(Model model, @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum, RedirectAttributes attributes) {
         PageHelper.startPage(pageNum, 10);
         List<FirstPageBlog> allFirstPageBlog = blogService.getAllFirstPageBlog();
-//        List<RecommendBlog> recommendedBlog = blogService.getRecommendedBlog();
+
 
         PageInfo<FirstPageBlog> pageInfo = new PageInfo<>(allFirstPageBlog);
+        log.info("首页数据为:{}", JSONObject.toJSONString(pageInfo, true));
         model.addAttribute("pageInfo", pageInfo);
-//        model.addAttribute("recommendedBlogs", recommendedBlog);
+
 
         return "index";
     }
 
-    //    搜索博客
+    /**
+     * 搜索博客
+     */
     @PostMapping("/search")
     public String search(Model model,
                          @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum,
                          @RequestParam String query) {
-        PageHelper.startPage(pageNum, 1000);
+        PageHelper.startPage(pageNum, 20);
         List<FirstPageBlog> searchBlog = blogService.getSearchBlog(query);
         PageInfo<FirstPageBlog> pageInfo = new PageInfo<>(searchBlog);
         model.addAttribute("pageInfo", pageInfo);
@@ -65,12 +73,20 @@ public class IndexController {
         return "search";
     }
 
-    //    跳转博客详情页面
+    /**
+     * 跳转博客详情页面
+     */
     @GetMapping("/blog/{id}")
     public String blog(@PathVariable Long id, Model model) {
         DetailedBlog detailedBlog = blogService.getDetailedBlog(id);
-        List<Comment> comments = commentService.listCommentByBlogId(id);
-        model.addAttribute("comments", comments);
+        // 打开评论功能才加载评论，否则不加载
+        if (detailedBlog.isCommentabled()) {
+            List<Comment> comments = commentService.listCommentByBlogId(id);
+            log.info("博客id为{}的评论:{}", id, JSONObject.toJSONString(comments, true));
+            model.addAttribute("comments", comments);
+        }
+        log.info("博客id为{}的详情:{}", id, JSONObject.toJSONString(detailedBlog, true));
+
         model.addAttribute("blog", detailedBlog);
         return "blog";
     }
@@ -83,7 +99,9 @@ public class IndexController {
 //        return "index :: newblogList";
 //    }
 
-    //    博客信息
+    /**
+     * 博客信息
+     */
     @GetMapping("/footer/blogmessage")
     public String blogMessage(Model model) {
         int blogTotal = blogService.getBlogTotal();

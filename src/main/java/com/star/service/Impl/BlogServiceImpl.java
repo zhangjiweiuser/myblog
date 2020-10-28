@@ -8,7 +8,6 @@ import com.star.service.BlogService;
 import com.star.util.MarkdownUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -91,10 +90,8 @@ public class BlogServiceImpl implements BlogService {
         }
         String content = detailedBlog.getContent();
         detailedBlog.setContent(MarkdownUtils.markdownToHtmlExtensions(content));
-//        文章访问数量自增
+        // 文章访问数量自增
         blogDao.updateViews(id);
-//        文章评论数量更新
-        blogDao.getCommentCountById(id);
         return detailedBlog;
     }
 

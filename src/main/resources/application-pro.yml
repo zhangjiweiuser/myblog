@@ -9,6 +9,9 @@ logging:
   level:
     root: warn
     com.star: info
+    com:
+      star:
+        dao: debug
   file: log/blog-pro.log
 
 mybatis:

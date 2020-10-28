@@ -238,7 +238,7 @@
 <script th:inline="javascript">
 
     // $('#newblog-container').load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
-    $('#blog-message').load("[[@{/footer/blogmessage}]]");
+    $('#blog-message').load("/footer/blogmessage");
 
     $('.menu.toggle').click(function () {
         $('.m-item').toggleClass('m-mobile-hide');
@@ -344,7 +344,7 @@
     });
 
     function postData() {
-        $("#comment-container").load(/*[[@{/comments}]]*/"",{
+      $.post(/*[[@{/comments}]]*/"", {
             "parentComment.id" : $("[name='parentComment.id']").val(),
             "blogId" : $("[name='blogId']").val(),
             "nickname": $("[name='nickname']").val(),
