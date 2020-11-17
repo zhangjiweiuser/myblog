@@ -19,7 +19,7 @@ public class ControllerExceptionHandler {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @ExceptionHandler(Exception.class)
-    public ModelAndView exceptionHander(HttpServletRequest request, Exception e) throws Exception {
+    public ModelAndView exceptionHandler(HttpServletRequest request, Exception e) throws Exception {
         logger.error("Request URL : {}，Exception : {}", request.getRequestURL(), e);
 
         // 当标识了状态码的时候就不拦截

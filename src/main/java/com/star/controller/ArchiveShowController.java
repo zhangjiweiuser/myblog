@@ -1,7 +1,5 @@
 package com.star.controller;
 
-import com.star.dao.BlogDao;
-import com.star.entity.Blog;
 import com.star.queryvo.BlogQuery;
 import com.star.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +11,6 @@ import java.util.List;
 
 /**
  * @Description: 时间轴页面显示控制器
- * @Date: Created in 9:54 2020/4/16
- * @Author: ONESTAR
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
  */
 @Controller
 public class ArchiveShowController {

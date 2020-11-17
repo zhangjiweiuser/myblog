@@ -8,10 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @Description: 友链显示控制器
- * @Date: Created in 13:54 2020/4/16
- * @Author: ONESTAR
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
  */
 @Controller
 public class FriendsShowController {

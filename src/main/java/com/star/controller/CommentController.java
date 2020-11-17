@@ -19,10 +19,6 @@ import java.util.List;
 
 /**
  * @Description: 评论控制器
- * @Author: ONESTAR
- * @Date: Created in 17:16 2020/4/5
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
  */
 @Controller
 public class CommentController {
@@ -36,7 +32,9 @@ public class CommentController {
     @Value("${comment.avatar}")
     private String avatar;
 
-    //    查询评论列表
+    /**
+     * 查询评论列表
+     */
     @GetMapping("/comments/{blogId}")
     public String comments(@PathVariable Long blogId, Model model) {
         List<Comment> comments = commentService.listCommentByBlogId(blogId);
@@ -68,7 +66,9 @@ public class CommentController {
         return "blog :: commentList";
     }
 
-    //    删除评论
+    /**
+     * 删除评论
+     */
     @GetMapping("/comment/{blogId}/{id}/delete")
     public String delete(@PathVariable Long blogId, @PathVariable Long id, Comment comment, RedirectAttributes attributes, Model model) {
         commentService.deleteComment(comment, id);

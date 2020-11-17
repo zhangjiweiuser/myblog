@@ -3,7 +3,6 @@ package com.star.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.star.dao.BlogDao;
 import com.star.entity.Comment;
 import com.star.queryvo.DetailedBlog;
 import com.star.queryvo.FirstPageBlog;
@@ -29,14 +28,10 @@ import java.util.List;
 @Controller
 public class IndexController {
 
-    @Autowired
-    private BlogDao blogDao;
 
     @Autowired
     private BlogService blogService;
 
-//    @Autowired
-//    private TypeService typeService;
 
     @Autowired
     private CommentService commentService;
@@ -90,14 +85,6 @@ public class IndexController {
         model.addAttribute("blog", detailedBlog);
         return "blog";
     }
-
-//    最新博客列表
-//    @GetMapping("/footer/newblog")
-//    public String newblogs(Model model) {
-//        List<FirstPageBlog> newBlog = blogService.getNewBlog();
-//        model.addAttribute("newblogs", newBlog);
-//        return "index :: newblogList";
-//    }
 
     /**
      * 博客信息

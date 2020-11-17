@@ -23,7 +23,9 @@ public class Message {
     private Long parentMessageId;
     private boolean adminMessage;
 
-    //回复评论
+    /**
+     * 回复评论
+     */
     private List<Message> replyMessages = new ArrayList<>();
     private Message parentMessage;
     private String parentNickname;

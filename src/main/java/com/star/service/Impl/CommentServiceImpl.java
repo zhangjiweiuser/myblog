@@ -13,10 +13,6 @@ import java.util.List;
 
 /**
  * @Description: 博客评论业务层接口实现类
- * @Author: ONESTAR
- * @Date: Created in 13:28 2020/4/5
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
  */
 @Service
 public class CommentServiceImpl implements CommentService {
